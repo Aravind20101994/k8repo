@@ -1,17 +1,21 @@
-# set base image (host OS)
-FROM python:3.8
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
 
-# set the working directory in the container
-WORKDIR /code
+# Set the working directory in the container
+WORKDIR /app
 
-# copy the dependencies file to the working directory
-COPY ./requirements.txt /code/requirements.txt
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# install dependencies
-RUN pip install -r requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# copy the content of the local src directory to the working directory
-COPY ./server.py /code/server.py
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
-# command to run on container start
-CMD [ "python", "./server.py" ]
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+
