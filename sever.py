@@ -1,4 +1,6 @@
 from flask import Flask
+pip install --upgrade Jinja2
+
 server = Flask(__name__)
 
 @server.route("/")
