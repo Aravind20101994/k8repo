@@ -2,10 +2,10 @@
 FROM python:3.8-slim
 
 # Set the working directory in the container
-WORKDIR /main
+WORKDIR /hello
 
 # Copy the current directory contents into the container at /app
-COPY . /main
+COPY . /hello
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
@@ -17,5 +17,5 @@ EXPOSE 5000
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["python", "server.py"]
+CMD ["python", "hello.py"]
 
